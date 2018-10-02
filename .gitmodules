@@ -1,0 +1,3 @@
+[submodule "mionix/python_hidraw"]
+	path = mionix/python_hidraw
+	url = https://github.com/vpelletier/python-hidraw.git
