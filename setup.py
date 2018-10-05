@@ -1,28 +1,10 @@
 import setuptools
-import subprocess
-
-
-class GitSubmodulesUpdateCommand(setuptools.Command):
-    description = "init and update git submodules"
-
-    def run(self):
-        subprocess.call(["git", "submodule", "update", "--init"])
-
-
-class TheBuildCommand(setuptools.Command):
-    description = "update submodules, then build as usual"
-
-    def run(self):
-        self._run_command('submodulesupdate')
-        setuptools.command.build_py.build_py.run(self)
 
 
 setuptools.setup(
 
     name = "mionixctl",
     version = "0.1",
-#    package_dir={"": "mionix"},
-#    packages = find_packages(),
     packages = ['mionix', 'mionix/python_hidraw/hidraw'],
 
     entry_points = {
@@ -45,9 +27,5 @@ setuptools.setup(
         'pyudev>=0.16',
         'pyyaml>=3.10'
     ],
-    cmdclass={
-        "submodulesupdate": GitSubmodulesUpdateCommand,
-        "build_py": TheBuildCommand
-    }
 
 )
